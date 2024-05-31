@@ -9,8 +9,8 @@ use App\Models\Project;
 class PageController extends Controller
 {
     public function index(){
-        $projects = Project::with('technology')->get();
-        // $projects = Project::with('technology', 'Type')->paginate(10);
+        // $projects = Project::with('technology')->get();
+        $projects = Project::all();
 
 
         return response()->json($projects);
