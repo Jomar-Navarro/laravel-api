@@ -10,7 +10,7 @@
     @if (count($project->types) > 0)
         <p>Type:
                 @foreach ($project->types as $type)
-                <span class="badge text-bg-info">{{ $type->title }}</span>
+                <span span class="badge text-bg-info">{{ $type->title }}</span>
                 @endforeach ()
         </p>
     @endif

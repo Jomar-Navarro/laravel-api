@@ -36,7 +36,7 @@ class PageController extends Controller
 
     public function getProjectSlug($slug){
         // $projects = Project::with('technology')->get();
-        $project = Project::where('slug', $slug)->with('technology', 'type', 'user')->first();
+        $project = Project::where('slug', $slug)->with('technology', 'types', 'user')->first();
 
         if ($project) {
             $success = true;
