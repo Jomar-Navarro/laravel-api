@@ -38,7 +38,18 @@ class PageController extends Controller
         // $projects = Project::with('technology')->get();
         $project = Project::where('slug', $slug)->with('technology', 'type', 'user')->first();
 
+        if ($project) {
+            $success = true;
+            if ($project->image) {
+                $project->image = asset('storage/' . $project->image);
+            }else{
+                $project->image = asset('storage/uploads/imagenotfound.jpg');
+                $project->image_original_name = 'no image';
+            }
+        }else{
+            $success = false;
+        }
 
-        return response()->json($project);
+        return response()->json(compact('success', 'project'));
     }
 }
