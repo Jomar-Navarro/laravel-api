@@ -17,6 +17,10 @@ class Project extends Model
         return $this->belongsToMany(Type::class);
     }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
     protected $fillable = [
         'title',
         'slug',

@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Technology;
+use App\Models\Type;
 
 class PageController extends Controller
 {
@@ -14,5 +16,29 @@ class PageController extends Controller
 
 
         return response()->json($projects);
+    }
+
+    public function getTechnologies(){
+        // $projects = Project::with('technology')->get();
+        $techno = Technology::all();
+
+
+        return response()->json($techno);
+    }
+
+    public function getTypes(){
+        // $projects = Project::with('technology')->get();
+        $type = Type::all();
+
+
+        return response()->json($type);
+    }
+
+    public function getProjectSlug($slug){
+        // $projects = Project::with('technology')->get();
+        $project = Project::where('slug', $slug)->with('technology', 'type', 'user')->first();
+
+
+        return response()->json($project);
     }
 }
